@@ -36,8 +36,10 @@ wine11 <- wine10[!(wine10$price > 500),]
 wineclean <- wine11
 
 hist(wineclean$price)
+hist(wineclean$points)
 
 price_points <-wineclean[, 3:4]
 points_pp <- price_points$points
 price_pp <- price_points$price
 corspeartest1 <- cor.test(price_pp, points_pp, method = "spearman", exact = FALSE)
+ggpairs(price_points)
