@@ -2,6 +2,7 @@ library(dyplr)
 library(purrrr)
 library(tidyr)
 library(stringr)
+library(GGally)
 
 wine1 = read.csv("C:/Users/benjamin.howard/Desktop/winemag-data-130k-v2.csv")
 Wine2 = as.data.frame(wine1)
@@ -30,4 +31,13 @@ ifelse(wine7$price > 300 , "Iconic", NA))))))
 
 wine8 <- cbind(wine7 , price_range)
 wine9 <- wine8 %>% drop_na(price, points)
-wineclean <- wine9[!(wine9$taster_name ==""),]
+wine10 <- wine9[!(wine9$taster_name ==""),]
+wine11 <- wine10[!(wine10$price > 500),]
+wineclean <- wine11
+
+hist(wineclean$price)
+
+price_points <-wineclean[, 3:4]
+points_pp <- price_points$points
+price_pp <- price_points$price
+corspeartest1 <- cor.test(price_pp, points_pp, method = "spearman", exact = FALSE)
