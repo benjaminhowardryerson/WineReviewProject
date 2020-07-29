@@ -1,0 +1,676 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Wine Clean},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Wine Clean}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{r-markdown}{%
+\subsection{R Markdown}\label{r-markdown}}
+
+This is an R Markdown document. Markdown is a simple formatting syntax
+for authoring HTML, PDF, and MS Word documents. For more details on
+using R Markdown see \url{http://rmarkdown.rstudio.com}.
+
+When you click the \textbf{Knit} button a document will be generated
+that includes both content as well as the output of any embedded R code
+chunks within the document. You can embed an R code chunk like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyr)}
+\KeywordTok{library}\NormalTok{(stringr)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(GGally)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'GGally':
+##   method from   
+##   +.gg   ggplot2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(klaR)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: MASS
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'MASS'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     select
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wine1 =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/benjamin.howard/Desktop/winemag-data-130k-v2.csv"}\NormalTok{)}
+\NormalTok{wine2 =}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(wine1)}
+\NormalTok{wine3 =}\StringTok{ }\NormalTok{wine2[,}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{11}\NormalTok{)]}
+\KeywordTok{colnames}\NormalTok{(wine3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "country"     "description" "points"      "price"       "province"   
+##  [6] "region_1"    "taster_name" "title"       "variety"     "winery"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wine4 =}\StringTok{ }\NormalTok{wine3[}\OperatorTok{!}\KeywordTok{duplicated}\NormalTok{(wine3[}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{)]),]}
+\KeywordTok{str}\NormalTok{(wine4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    118971 obs. of  10 variables:
+##  $ country    : chr  "Italy" "Portugal" "US" "US" ...
+##  $ description: chr  "Aromas include tropical fruit, broom, brimstone and dried herb. The palate isn't overly expressive, offering un"| __truncated__ "This is ripe and fruity, a wine that is smooth while still structured. Firm tannins are filled out with juicy r"| __truncated__ "Tart and snappy, the flavors of lime flesh and rind dominate. Some green pineapple pokes through, with crisp ac"| __truncated__ "Pineapple rind, lemon pith and orange blossom start off the aromas. The palate is a bit more opulent, with note"| __truncated__ ...
+##  $ points     : int  87 87 87 87 87 87 87 87 87 87 ...
+##  $ price      : num  NA 15 14 13 65 15 16 24 12 27 ...
+##  $ province   : chr  "Sicily & Sardinia" "Douro" "Oregon" "Michigan" ...
+##  $ region_1   : chr  "Etna" "" "Willamette Valley" "Lake Michigan Shore" ...
+##  $ taster_name: chr  "Kerin Oâ\200\231Keefe" "Roger Voss" "Paul Gregutt" "Alexander Peartree" ...
+##  $ title      : chr  "Nicosia 2013 VulkÃ  Bianco  (Etna)" "Quinta dos Avidagos 2011 Avidagos Red (Douro)" "Rainstorm 2013 Pinot Gris (Willamette Valley)" "St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore)" ...
+##  $ variety    : chr  "White Blend" "Portuguese Red" "Pinot Gris" "Riesling" ...
+##  $ winery     : chr  "Nicosia" "Quinta dos Avidagos" "Rainstorm" "St. Julian" ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{yearextract <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(string)\{}\KeywordTok{str_extract}\NormalTok{(string, }\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{-*}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{d+}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{.*}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{d*"}\NormalTok{)\}}
+\NormalTok{year <-}\StringTok{ }\KeywordTok{yearextract}\NormalTok{(wine4}\OperatorTok{$}\NormalTok{title)}
+\NormalTok{wine7 <-}\KeywordTok{cbind}\NormalTok{(wine4, year)}
+\NormalTok{wine7}\OperatorTok{$}\NormalTok{year =}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{as.character}\NormalTok{(wine7}\OperatorTok{$}\NormalTok{year))}
+\KeywordTok{head}\NormalTok{(wine7,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     country
+## 1     Italy
+## 2  Portugal
+## 3        US
+## 4        US
+## 5        US
+## 6     Spain
+## 7     Italy
+## 8    France
+## 9   Germany
+## 10   France
+##                                                                                                                                                                                                                                                              description
+## 1                                                                                           Aromas include tropical fruit, broom, brimstone and dried herb. The palate isn't overly expressive, offering unripened apple, citrus and dried sage alongside brisk acidity.
+## 2                                    This is ripe and fruity, a wine that is smooth while still structured. Firm tannins are filled out with juicy red berry fruits and freshened with acidity. It's  already drinkable, although it will certainly be better from 2016.
+## 3                                                                             Tart and snappy, the flavors of lime flesh and rind dominate. Some green pineapple pokes through, with crisp acidity underscoring the flavors. The wine was all stainless-steel fermented.
+## 4                                                                Pineapple rind, lemon pith and orange blossom start off the aromas. The palate is a bit more opulent, with notes of honey-drizzled guava and mango giving way to a slightly astringent, semidry finish.
+## 5              Much like the regular bottling from 2012, this comes across as rather rough and tannic, with rustic, earthy, herbal characteristics. Nonetheless, if you think of it as a pleasantly unfussy country wine, it's a good companion to a hearty winter stew.
+## 6  Blackberry and raspberry aromas show a typical Navarran whiff of green herbs and, in this case, horseradish. In the mouth, this is fairly full bodied, with tomatoey acidity. Spicy, herbal flavors complement dark plum fruit, while the finish is fresh but grabby.
+## 7                                                                                  Here's a bright, informal red that opens with aromas of candied berry, white pepper and savory herb that carry over to the palate. It's balanced with fresh acidity and soft tannins.
+## 8                                                                                                                                             This dry and restrained wine offers spice in profusion. Balanced with acidity and a firm texture, it's very much for food.
+## 9                                                                                                           Savory dried thyme notes accent sunnier flavors of preserved peach in this brisk, off-dry wine. It's fruity and fresh, with an elegant, sprightly footprint.
+## 10                                                                                                      This has great depth of flavor with its fresh apple and pear fruits and touch of spice. It's off dry while balanced with acidity and a crisp texture. Drink now.
+##    points price          province            region_1        taster_name
+## 1      87    NA Sicily & Sardinia                Etna    Kerin Oâ\200\231Keefe
+## 2      87    15             Douro                             Roger Voss
+## 3      87    14            Oregon   Willamette Valley       Paul Gregutt
+## 4      87    13          Michigan Lake Michigan Shore Alexander Peartree
+## 5      87    65            Oregon   Willamette Valley       Paul Gregutt
+## 6      87    15    Northern Spain             Navarra  Michael Schachner
+## 7      87    16 Sicily & Sardinia            Vittoria    Kerin Oâ\200\231Keefe
+## 8      87    24            Alsace              Alsace         Roger Voss
+## 9      87    12       Rheinhessen                     Anna Lee C. Iijima
+## 10     87    27            Alsace              Alsace         Roger Voss
+##                                                                                  title
+## 1                                                   Nicosia 2013 VulkÃ  Bianco  (Etna)
+## 2                                        Quinta dos Avidagos 2011 Avidagos Red (Douro)
+## 3                                        Rainstorm 2013 Pinot Gris (Willamette Valley)
+## 4                  St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore)
+## 5  Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)
+## 6                                Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra)
+## 7                                     Terre di Giurfo 2013 Belsito Frappato (Vittoria)
+## 8                                                Trimbach 2012 Gewurztraminer (Alsace)
+## 9                                 Heinz Eifel 2013 Shine GewÃ¼rztraminer (Rheinhessen)
+## 10                             Jean-Baptiste Adam 2012 Les Natures Pinot Gris (Alsace)
+##               variety              winery year
+## 1         White Blend             Nicosia 2013
+## 2      Portuguese Red Quinta dos Avidagos 2011
+## 3          Pinot Gris           Rainstorm 2013
+## 4            Riesling          St. Julian 2013
+## 5          Pinot Noir        Sweet Cheeks 2012
+## 6  Tempranillo-Merlot              Tandem 2011
+## 7            Frappato     Terre di Giurfo 2013
+## 8     GewÃ¼rztraminer            Trimbach 2012
+## 9     GewÃ¼rztraminer         Heinz Eifel 2013
+## 10         Pinot Gris  Jean-Baptiste Adam 2012
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(wine7)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    118971 obs. of  11 variables:
+##  $ country    : chr  "Italy" "Portugal" "US" "US" ...
+##  $ description: chr  "Aromas include tropical fruit, broom, brimstone and dried herb. The palate isn't overly expressive, offering un"| __truncated__ "This is ripe and fruity, a wine that is smooth while still structured. Firm tannins are filled out with juicy r"| __truncated__ "Tart and snappy, the flavors of lime flesh and rind dominate. Some green pineapple pokes through, with crisp ac"| __truncated__ "Pineapple rind, lemon pith and orange blossom start off the aromas. The palate is a bit more opulent, with note"| __truncated__ ...
+##  $ points     : int  87 87 87 87 87 87 87 87 87 87 ...
+##  $ price      : num  NA 15 14 13 65 15 16 24 12 27 ...
+##  $ province   : chr  "Sicily & Sardinia" "Douro" "Oregon" "Michigan" ...
+##  $ region_1   : chr  "Etna" "" "Willamette Valley" "Lake Michigan Shore" ...
+##  $ taster_name: chr  "Kerin Oâ\200\231Keefe" "Roger Voss" "Paul Gregutt" "Alexander Peartree" ...
+##  $ title      : chr  "Nicosia 2013 VulkÃ  Bianco  (Etna)" "Quinta dos Avidagos 2011 Avidagos Red (Douro)" "Rainstorm 2013 Pinot Gris (Willamette Valley)" "St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore)" ...
+##  $ variety    : chr  "White Blend" "Portuguese Red" "Pinot Gris" "Riesling" ...
+##  $ winery     : chr  "Nicosia" "Quinta dos Avidagos" "Rainstorm" "St. Julian" ...
+##  $ year       : num  2013 2011 2013 2013 2012 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{price_range <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(wine7}\OperatorTok{$}\NormalTok{price }\OperatorTok{<=}\StringTok{ }\DecValTok{10}\NormalTok{, }\StringTok{"Value"}\NormalTok{, }
+\KeywordTok{ifelse}\NormalTok{(wine7}\OperatorTok{$}\NormalTok{price }\OperatorTok{<=}\StringTok{ }\DecValTok{20}\NormalTok{, }\StringTok{"Premium"}\NormalTok{, }
+\KeywordTok{ifelse}\NormalTok{(wine7}\OperatorTok{$}\NormalTok{price }\OperatorTok{<=}\StringTok{ }\DecValTok{40}\NormalTok{, }\StringTok{"Ultra Premium"}\NormalTok{, }
+\KeywordTok{ifelse}\NormalTok{(wine7}\OperatorTok{$}\NormalTok{price }\OperatorTok{<=}\StringTok{ }\DecValTok{100}\NormalTok{, }\StringTok{"Luxury"}\NormalTok{, }
+\KeywordTok{ifelse}\NormalTok{(wine7}\OperatorTok{$}\NormalTok{price }\OperatorTok{<=}\StringTok{ }\DecValTok{300}\NormalTok{, }\StringTok{"Super Luxury"}\NormalTok{, }
+\KeywordTok{ifelse}\NormalTok{(wine7}\OperatorTok{$}\NormalTok{price }\OperatorTok{>}\StringTok{ }\DecValTok{300}\NormalTok{ , }\StringTok{"Iconic"}\NormalTok{, }\OtherTok{NA}\NormalTok{))))))}
+
+\NormalTok{wine8 <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(wine7 , price_range)}
+\NormalTok{wine9 <-}\StringTok{ }\NormalTok{wine8 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{drop_na}\NormalTok{(price, points)}
+\NormalTok{wine10 <-}\StringTok{ }\NormalTok{wine9[}\OperatorTok{!}\NormalTok{(wine9}\OperatorTok{$}\NormalTok{taster_name }\OperatorTok{==}\StringTok{""}\NormalTok{),]}
+\NormalTok{wine11 <-}\StringTok{ }\NormalTok{wine10[}\OperatorTok{!}\NormalTok{(wine10}\OperatorTok{$}\NormalTok{price }\OperatorTok{>}\StringTok{ }\DecValTok{200}\NormalTok{),]}
+\NormalTok{as}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function (object, Class, strict = TRUE, ext = possibleExtends(thisClass, 
+##     Class)) 
+## {
+##     thisClass <- .class1(object)
+##     if (.identC(thisClass, Class) || .identC(Class, "ANY")) 
+##         return(object)
+##     where <- .classEnv(thisClass, mustFind = FALSE)
+##     coerceFun <- getGeneric("coerce", where = where)
+##     coerceMethods <- .getMethodsTable(coerceFun, environment(coerceFun), 
+##         inherited = TRUE)
+##     asMethod <- .quickCoerceSelect(thisClass, Class, coerceFun, 
+##         coerceMethods, where)
+##     if (is.null(asMethod)) {
+##         sig <- c(from = thisClass, to = Class)
+##         asMethod <- selectMethod("coerce", sig, optional = TRUE, 
+##             useInherited = FALSE, fdef = coerceFun, mlist = getMethodsForDispatch(coerceFun))
+##         if (is.null(asMethod)) {
+##             canCache <- TRUE
+##             inherited <- FALSE
+##             if (is(object, Class)) {
+##                 ClassDef <- getClassDef(Class, where)
+##                 if (isFALSE(ext)) 
+##                   stop(sprintf("internal problem in as(): %s is(object, \"%s\") is TRUE, but the metadata asserts that the 'is' relation is FALSE", 
+##                     dQuote(thisClass), Class), domain = NA)
+##                 else if (isTRUE(ext)) 
+##                   asMethod <- .makeAsMethod(quote(from), TRUE, 
+##                     Class, ClassDef, where)
+##                 else {
+##                   test <- ext@test
+##                   asMethod <- .makeAsMethod(ext@coerce, ext@simple, 
+##                     Class, ClassDef, where)
+##                   canCache <- (!is.function(test)) || isTRUE(body(test))
+##                 }
+##             }
+##             if (is.null(asMethod) && extends(Class, thisClass)) {
+##                 ClassDef <- getClassDef(Class, where)
+##                 asMethod <- .asFromReplace(thisClass, Class, 
+##                   ClassDef, where)
+##             }
+##             if (is.null(asMethod)) {
+##                 asMethod <- selectMethod("coerce", sig, optional = TRUE, 
+##                   c(from = TRUE, to = FALSE), fdef = coerceFun, 
+##                   mlist = coerceMethods)
+##                 inherited <- TRUE
+##             }
+##             else if (canCache) 
+##                 asMethod <- .asCoerceMethod(asMethod, thisClass, 
+##                   ClassDef, FALSE, where)
+##             if (is.null(asMethod)) 
+##                 stop(gettextf("no method or default for coercing %s to %s", 
+##                   dQuote(thisClass), dQuote(Class)), domain = NA)
+##             else if (canCache) {
+##                 cacheMethod("coerce", sig, asMethod, fdef = coerceFun, 
+##                   inherited = inherited)
+##             }
+##         }
+##     }
+##     if (strict) 
+##         asMethod(object)
+##     else asMethod(object, strict = FALSE)
+## }
+## <bytecode: 0x0000000013e77258>
+## <environment: namespace:methods>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wine12 <-}\StringTok{ }\NormalTok{wine11[}\OperatorTok{!}\NormalTok{(wine11}\OperatorTok{$}\NormalTok{year }\OperatorTok{<}\StringTok{ }\DecValTok{1990}\NormalTok{),]}
+\NormalTok{wine13 <-}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(wine12)}
+
+\NormalTok{age_range <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(wine13}\OperatorTok{$}\NormalTok{year }\OperatorTok{>=}\StringTok{ }\DecValTok{2013}\NormalTok{, }\StringTok{"Young"}\NormalTok{, }
+\KeywordTok{ifelse}\NormalTok{(wine13}\OperatorTok{$}\NormalTok{year }\OperatorTok{>=}\StringTok{ }\DecValTok{2006}\NormalTok{, }\StringTok{"Mature"}\NormalTok{, }
+\KeywordTok{ifelse}\NormalTok{(wine13}\OperatorTok{$}\NormalTok{year }\OperatorTok{>=}\StringTok{ }\DecValTok{1990}\NormalTok{, }\StringTok{"Old"}\NormalTok{, }\OtherTok{NA}\NormalTok{)))}
+\NormalTok{wine14 <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(wine13 , age_range)}
+\NormalTok{wine15 <-}\StringTok{ }\NormalTok{wine14[}\OperatorTok{!}\NormalTok{(wine14}\OperatorTok{$}\NormalTok{price }\OperatorTok{>}\StringTok{ }\DecValTok{100}\NormalTok{),]}
+
+\NormalTok{wine16 =}\StringTok{ }\KeywordTok{filter}\NormalTok{(wine15, country }\OperatorTok{!=}\StringTok{ ""} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Armenia"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Bordeaux-style Red Blend"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Bosnia and Herzegovina"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Brazil"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Bulgaria"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Canada"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "China"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Croatia"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Cyprus"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Czech Republic"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "England"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Georgia"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Lebanon"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "India"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Hungary"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Luxembourg"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Macedonia"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Mexico"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Moldova"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Morocco"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Peru"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Romania"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Serbia"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{ "Slovakia"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Slovenia"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Switzerland"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Turkey"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Ukraine"} \OperatorTok{&}\StringTok{ }\NormalTok{country }\OperatorTok{!=}\StringTok{"Uruguay"}\NormalTok{)}
+
+
+\NormalTok{wineclean <-}\StringTok{ }\NormalTok{wine16}
+\KeywordTok{head}\NormalTok{(wineclean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    country
+## 1 Portugal
+## 2       US
+## 3       US
+## 4       US
+## 5    Spain
+## 6    Italy
+##                                                                                                                                                                                                                                                             description
+## 1                                   This is ripe and fruity, a wine that is smooth while still structured. Firm tannins are filled out with juicy red berry fruits and freshened with acidity. It's  already drinkable, although it will certainly be better from 2016.
+## 2                                                                            Tart and snappy, the flavors of lime flesh and rind dominate. Some green pineapple pokes through, with crisp acidity underscoring the flavors. The wine was all stainless-steel fermented.
+## 3                                                               Pineapple rind, lemon pith and orange blossom start off the aromas. The palate is a bit more opulent, with notes of honey-drizzled guava and mango giving way to a slightly astringent, semidry finish.
+## 4             Much like the regular bottling from 2012, this comes across as rather rough and tannic, with rustic, earthy, herbal characteristics. Nonetheless, if you think of it as a pleasantly unfussy country wine, it's a good companion to a hearty winter stew.
+## 5 Blackberry and raspberry aromas show a typical Navarran whiff of green herbs and, in this case, horseradish. In the mouth, this is fairly full bodied, with tomatoey acidity. Spicy, herbal flavors complement dark plum fruit, while the finish is fresh but grabby.
+## 6                                                                                 Here's a bright, informal red that opens with aromas of candied berry, white pepper and savory herb that carry over to the palate. It's balanced with fresh acidity and soft tannins.
+##   points price          province            region_1        taster_name
+## 1     87    15             Douro                             Roger Voss
+## 2     87    14            Oregon   Willamette Valley       Paul Gregutt
+## 3     87    13          Michigan Lake Michigan Shore Alexander Peartree
+## 4     87    65            Oregon   Willamette Valley       Paul Gregutt
+## 5     87    15    Northern Spain             Navarra  Michael Schachner
+## 6     87    16 Sicily & Sardinia            Vittoria    Kerin Oâ\200\231Keefe
+##                                                                                 title
+## 1                                       Quinta dos Avidagos 2011 Avidagos Red (Douro)
+## 2                                       Rainstorm 2013 Pinot Gris (Willamette Valley)
+## 3                 St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore)
+## 4 Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)
+## 5                               Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra)
+## 6                                    Terre di Giurfo 2013 Belsito Frappato (Vittoria)
+##              variety              winery year price_range age_range
+## 1     Portuguese Red Quinta dos Avidagos 2011     Premium    Mature
+## 2         Pinot Gris           Rainstorm 2013     Premium     Young
+## 3           Riesling          St. Julian 2013     Premium     Young
+## 4         Pinot Noir        Sweet Cheeks 2012      Luxury    Mature
+## 5 Tempranillo-Merlot              Tandem 2011     Premium    Mature
+## 6           Frappato     Terre di Giurfo 2013     Premium     Young
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{agr <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(wineclean[, }\DecValTok{3}\OperatorTok{:}\DecValTok{4}\NormalTok{], }\KeywordTok{list}\NormalTok{(wineclean}\OperatorTok{$}\NormalTok{country), mean)}
+\NormalTok{agr[}\KeywordTok{order}\NormalTok{(agr}\OperatorTok{$}\NormalTok{points,}\DataTypeTok{decreasing=} \OtherTok{TRUE}\NormalTok{),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         Group.1   points    price
+## 3       Austria 90.22641 30.28757
+## 6       Germany 89.68222 31.69278
+## 14           US 88.96687 34.64548
+## 9         Italy 88.80339 36.42235
+## 2     Australia 88.59791 30.11935
+## 8        Israel 88.51481 31.48747
+## 5        France 88.45300 29.14496
+## 10  New Zealand 88.32092 26.71720
+## 11     Portugal 88.24310 22.48810
+## 12 South Africa 87.89000 23.72000
+## 7        Greece 87.30617 22.60741
+## 13        Spain 87.13966 24.22134
+## 1     Argentina 86.58279 22.20831
+## 4         Chile 86.46218 19.62236
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{agr[}\KeywordTok{order}\NormalTok{(agr}\OperatorTok{$}\NormalTok{price,}\DataTypeTok{decreasing=} \OtherTok{TRUE}\NormalTok{),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         Group.1   points    price
+## 9         Italy 88.80339 36.42235
+## 14           US 88.96687 34.64548
+## 6       Germany 89.68222 31.69278
+## 8        Israel 88.51481 31.48747
+## 3       Austria 90.22641 30.28757
+## 2     Australia 88.59791 30.11935
+## 5        France 88.45300 29.14496
+## 10  New Zealand 88.32092 26.71720
+## 13        Spain 87.13966 24.22134
+## 12 South Africa 87.89000 23.72000
+## 7        Greece 87.30617 22.60741
+## 11     Portugal 88.24310 22.48810
+## 1     Argentina 86.58279 22.20831
+## 4         Chile 86.46218 19.62236
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{scatter.smooth}\NormalTok{(}\DataTypeTok{x=}\NormalTok{wineclean}\OperatorTok{$}\NormalTok{price, }\DataTypeTok{y=}\NormalTok{wineclean}\OperatorTok{$}\NormalTok{points, }\DataTypeTok{xlab =}\StringTok{"Price"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Points"}\NormalTok{,  }\DataTypeTok{main=}\StringTok{"Price ~ Points"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Wine-Data-Cleansing_Final_RMD_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wf <-}\StringTok{ }\NormalTok{wineclean}
+\KeywordTok{hist}\NormalTok{(wf}\OperatorTok{$}\NormalTok{points, }\DataTypeTok{main =} \StringTok{"Histogram of Points"}\NormalTok{, }\DataTypeTok{xlab =} \StringTok{"Points"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Count"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Wine-Data-Cleansing_Final_RMD_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(wf}\OperatorTok{$}\NormalTok{price, }\DataTypeTok{main =} \StringTok{"Histogram of Points"}\NormalTok{, }\DataTypeTok{xlab =} \StringTok{"Points"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Count"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Wine-Data-Cleansing_Final_RMD_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{boxplot}\NormalTok{(wineclean}\OperatorTok{$}\NormalTok{points, }\DataTypeTok{main=}\StringTok{"Points"}\NormalTok{, }\DataTypeTok{sub=}\KeywordTok{paste}\NormalTok{(}\StringTok{"Outlier rows: "}\NormalTok{, }\KeywordTok{boxplot.stats}\NormalTok{(wineclean}\OperatorTok{$}\NormalTok{points)}\OperatorTok{$}\NormalTok{out))}
+\KeywordTok{boxplot}\NormalTok{(wineclean}\OperatorTok{$}\NormalTok{price, }\DataTypeTok{main=}\StringTok{"Price"}\NormalTok{, }\DataTypeTok{sub=}\KeywordTok{paste}\NormalTok{(}\StringTok{"Outlier rows: "}\NormalTok{, }\KeywordTok{boxplot.stats}\NormalTok{(wineclean}\OperatorTok{$}\NormalTok{price)}\OperatorTok{$}\NormalTok{out))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Wine-Data-Cleansing_Final_RMD_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wineclean }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{points, }\DataTypeTok{y=}\NormalTok{price)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position=}\StringTok{"jitter"}\NormalTok{, }\DataTypeTok{alpha=}\DecValTok{1}\OperatorTok{/}\DecValTok{10}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method=}\StringTok{"lm"}\NormalTok{, }\DataTypeTok{se=}\NormalTok{F)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Wine-Data-Cleansing_Final_RMD_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wf }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{points, }\DataTypeTok{y=}\NormalTok{price)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position=}\StringTok{"jitter"}\NormalTok{, }\DataTypeTok{alpha=}\DecValTok{1}\OperatorTok{/}\DecValTok{10}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method=}\StringTok{"lm"}\NormalTok{, }\DataTypeTok{se=}\NormalTok{F)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Wine-Data-Cleansing_Final_RMD_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{year <-}\StringTok{ }\NormalTok{wf}\OperatorTok{$}\NormalTok{year}
+\NormalTok{pts <-}\StringTok{ }\NormalTok{wf}\OperatorTok{$}\NormalTok{points}
+\NormalTok{price <-}\StringTok{ }\NormalTok{wf}\OperatorTok{$}\NormalTok{price}
+\NormalTok{model <-}\StringTok{ }\NormalTok{price }\OperatorTok{~}\StringTok{ }\NormalTok{pts}
+\NormalTok{model2 <-}\StringTok{ }\NormalTok{year }\OperatorTok{~}\StringTok{ }\NormalTok{pts}
+\NormalTok{wflm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(model)}
+\NormalTok{wflm2 <-}\KeywordTok{lm}\NormalTok{(model2)}
+\KeywordTok{summary}\NormalTok{(wflm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = model)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -38.300 -10.870  -3.549   7.121  86.881 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -294.85732    1.69055  -174.4   <2e-16 ***
+## pts            3.67872    0.01909   192.7   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 15.87 on 80600 degrees of freedom
+## Multiple R-squared:  0.3153, Adjusted R-squared:  0.3153 
+## F-statistic: 3.712e+04 on 1 and 80600 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(wflm2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = model2)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+##   -22.9    -3.3    -1.0     0.9 16386.7 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 1962.8518    13.6234 144.080  < 2e-16 ***
+## pts            0.5659     0.1539   3.678 0.000235 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 127.9 on 80600 degrees of freedom
+## Multiple R-squared:  0.0001678,  Adjusted R-squared:  0.0001554 
+## F-statistic: 13.53 on 1 and 80600 DF,  p-value: 0.0002351
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(pts , price)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5615601
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(pts, year)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.01295443
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{create_train_test <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(data, }\DataTypeTok{size =} \FloatTok{0.95}\NormalTok{, }\DataTypeTok{train =} \OtherTok{TRUE}\NormalTok{) \{}
+\NormalTok{     n_row =}\StringTok{ }\KeywordTok{nrow}\NormalTok{(data)}
+\NormalTok{     total_row =}\StringTok{ }\NormalTok{size }\OperatorTok{*}\StringTok{ }\NormalTok{n_row}
+\NormalTok{     train_sample <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\StringTok{ }\NormalTok{total_row}
+     \ControlFlowTok{if}\NormalTok{ (train }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}\NormalTok{) \{}
+         \KeywordTok{return}\NormalTok{ (data[train_sample, ])}
+\NormalTok{     \} }\ControlFlowTok{else}\NormalTok{ \{}
+         \KeywordTok{return}\NormalTok{ (data[}\OperatorTok{-}\NormalTok{train_sample, ])}
+\NormalTok{     \}}
+\NormalTok{ \}}
+\NormalTok{data_train <-}\StringTok{ }\KeywordTok{create_train_test}\NormalTok{(wf, }\FloatTok{0.95}\NormalTok{, }\DataTypeTok{train =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{data_test <-}\StringTok{ }\KeywordTok{create_train_test}\NormalTok{(wf, }\FloatTok{0.95}\NormalTok{, }\DataTypeTok{train =} \OtherTok{FALSE}\NormalTok{)}
+\KeywordTok{dim}\NormalTok{(data_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 76571    13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(data_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4031   13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(rpart)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{document}
